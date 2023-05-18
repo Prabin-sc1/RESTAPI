@@ -1,30 +1,26 @@
 package com.boot.restapi.bookrestapi.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 
 @Entity
-public class Book {
+public class Author {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	private String email;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private Author author;
-
-	public Book() {
+	public Author() {
 	}
 
-	public Book(int id, String name, Author author) {
+	public Author(int id, String name, String email) {
 		this.id = id;
 		this.name = name;
-		this.author = author;
+		this.email = email;
 	}
 
 	public int getId() {
@@ -43,17 +39,17 @@ public class Book {
 		this.name = name;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setAuthor(Author author) {
-		this.author = author;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", author=" + author + "]";
+		return "Author [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
 
 }
